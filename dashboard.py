@@ -12,8 +12,8 @@ st.set_page_config(page_title="Air Quality Dashboard (PRSA)", layout="wide")
 # load data
 @st.cache_data
 def load_data():
-    daily_df = pd.read_csv("C:\\dicoding\\Submission_BFAD\\dashboard\\data\\daily_df.csv")
-    station_cluster = pd.read_csv("C:\\dicoding\\Submission_BFAD\\dashboard\\data\\station_cluster.csv")
+    daily_df = pd.read_csv("./data/daily_df.csv")
+    station_cluster = pd.read_csv("./data/station_cluster.csv")
 
     daily_df["datetime"] = pd.to_datetime(daily_df["datetime"])
     if "season" not in daily_df.columns:
@@ -397,4 +397,5 @@ with tab_geo:
     # force re-render (paksa re-render untuk menghindari bug map)
     selected_key = "_".join(sorted(selected_stations))
     map_key = f"geo_{start_date}_{end_date}_{selected_key}_{show_heatmap}_{show_segmentation}_{grid_step}_{seg_opacity}"
+
     st_folium(m, width=1100, height=650, returned_objects=[], key=map_key)
