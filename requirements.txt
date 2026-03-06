@@ -6,4 +6,5 @@ plotly
 seaborn
 streamlit
 streamlit_folium
+altair==4.2.2
 
